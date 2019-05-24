@@ -1,24 +1,28 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Node implements Comparable {
+/**
+ * Each Node object represents an OSM node, the connecting edges on that node, and the distance of this node from a given node (starting node in @WalkRouter)
+ */
+
+class Node implements Comparable<Node> {
 
     private final long id;
     private final List<Edge> edges;
-    private long minDistance;
+    private long distance;
 
     Node(long id) {
         this.id = id;
         edges = new ArrayList<>();
-        minDistance = Long.MAX_VALUE;
+        distance = Long.MAX_VALUE;
     }
 
-    long getMinDistance() {
-        return minDistance;
+    long getDistance() {
+        return distance;
     }
 
-    void setMinDistance(long minDistance) {
-        this.minDistance = minDistance;
+    void setDistance(long distance) {
+        this.distance = distance;
     }
 
     List<Edge> getEdges() {
@@ -30,11 +34,7 @@ class Node implements Comparable {
     }
 
     @Override
-    public int compareTo(Object that) {
-        if (that instanceof Node) {
-            return Long.compare(getMinDistance(), ((Node) that).getMinDistance());
-        } else {
-            throw new IllegalArgumentException("Invalid class: [" + that + "] is an instance of [" + that.getClass() + "]. Requires [" + this.getClass() + "]");
-        }
+    public int compareTo(Node that) {
+        return Long.compare(getDistance(), that.getDistance());
     }
 }
