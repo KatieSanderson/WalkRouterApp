@@ -8,7 +8,6 @@ public class Application implements AutoCloseable {
 
     private final BufferedReader bufferedReader;
     private final Map<Long, Node> nodeMap;
-    private final List<Edge> edges;
     private final Set<Node> visitedNodes;
     private final Queue<Node> queue;
 
@@ -16,10 +15,9 @@ public class Application implements AutoCloseable {
     private long inputNodeEnd;
 
 
-    public Application(BufferedReader bufferedReader) {
+    private Application(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
         nodeMap = new HashMap<>();
-        edges = new ArrayList<>();
         visitedNodes = new HashSet<>();
         queue = new PriorityQueue<>();
     }
@@ -48,7 +46,6 @@ public class Application implements AutoCloseable {
                 checkNeighbours(currentNode);
             }
         }
-        System.out.println(queue.peek().getId());
         return queue.poll();
     }
 
@@ -73,18 +70,17 @@ public class Application implements AutoCloseable {
     }
 
     private void parseURL() throws IOException {
-        // parse and add nodes
+        // parse and add nodes to map
         int numNodes = Integer.parseInt(bufferedReader.readLine());
         for (int i = 0; i < numNodes; i++) {
             Node node = parseNode(bufferedReader.readLine());
             nodeMap.put(node.getId(), node);
         }
 
-        // parse and add edges
+        // parse and add edges to nodes
         int numEdges = Integer.parseInt(bufferedReader.readLine());
         for (int i = 0; i < numEdges; i++) {
             Edge edge = parseEdge(bufferedReader.readLine());
-            edges.add(edge);
             for (Node node : edge.getNodes()) {
                 node.getEdges().add(edge);
             }
@@ -94,6 +90,7 @@ public class Application implements AutoCloseable {
     private Edge parseEdge(String edgeData) {
         String[] edgeMetaDataSplit = edgeData.split(" ");
         List<Node> edgeNodes = new ArrayList<>();
+        // all array members except last index are expected to be node ids
         for (int i = 0; i < edgeMetaDataSplit.length - 1; i++) {
             edgeNodes.add(nodeMap.get(Long.parseLong(edgeMetaDataSplit[i])));
         }

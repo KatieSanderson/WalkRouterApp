@@ -1,20 +1,20 @@
 import java.util.List;
 
-public class Edge {
+class Edge {
 
     private final List<Node> nodes;
     private final int distance;
 
-    public Edge(List<Node> nodes, int distance) {
+    Edge(List<Node> nodes, int distance) {
         this.nodes = nodes;
         this.distance = distance;
     }
 
-    public List<Node> getNodes() {
+    List<Node> getNodes() {
         return nodes;
     }
 
-    public int getDistance() {
+    int getDistance() {
         return distance;
     }
 }

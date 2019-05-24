@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node implements Comparable {
+class Node implements Comparable {
 
     private final long id;
     private final List<Edge> edges;
@@ -13,19 +13,19 @@ public class Node implements Comparable {
         minDistance = Long.MAX_VALUE;
     }
 
-    public long getMinDistance() {
+    long getMinDistance() {
         return minDistance;
     }
 
-    public void setMinDistance(long minDistance) {
+    void setMinDistance(long minDistance) {
         this.minDistance = minDistance;
     }
 
-    public List<Edge> getEdges() {
+    List<Edge> getEdges() {
         return edges;
     }
 
-    public long getId() {
+    long getId() {
         return id;
     }
 
