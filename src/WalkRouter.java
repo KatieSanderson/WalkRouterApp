@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -40,7 +37,13 @@ public class WalkRouter {
     }
 
     public static void main(String[] args) throws Exception {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL(args[0]).openStream()))) {
+        FileReader fileReader;
+        try {
+            fileReader = new FileReader(new File(args[0]));
+        } catch (FileNotFoundException e) {
+            throw new IllegalArgumentException("Invalid file input. No file [" + args[0] + "].");
+        }
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             WalkRouter walkRouter = new WalkRouter(bufferedReader);
             walkRouter.parseURL();
 
