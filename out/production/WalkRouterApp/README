@@ -49,8 +49,6 @@ ASSUMPTIONS
 
 EXTENSIONS
 Additional features which may be considered:
-1. Capability for outputting the shortest distance path from findShortestDistanceBetweenNodes (for example, Node A -> Node C -> Node D)
-    a. Would require storing the path to each node whilst calculating findShortestDistanceBetweenNodes
 2. Capability for multiple shortest path requests on same graph (subsequent calls to findShortestDistanceBetweenNodes)
     a. Would require all Nodes' distances reset (Long.MAX_VALUE for all Nodes except startNode, which is set to 0)
     b. Would require user input to specify nodes for subsequent calls

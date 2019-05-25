@@ -20,28 +20,48 @@ import java.util.*;
  * Input is parsed into {@link Node} and {@link Edge}. The shortest walking distance in meters is computed between two given OSM nodes in the graph (assuming all edges are walkable)
  */
 
-public class WalkRouter {
+public class WalkRouter implements AutoCloseable{
 
     private final BufferedReader bufferedReader;
+    private final Scanner scanner;
     private final Map<Long, Node> nodeMap;
-    private final Set<Node> visitedNodes;
-    private final PriorityQueue<Node> priorityQueue;
+
+    private Set<Node> visitedNodes;
+    private PriorityQueue<Node> priorityQueue;
 
     private WalkRouter(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
+        this.scanner = new Scanner(System.in);
         nodeMap = new HashMap<>();
         visitedNodes = new HashSet<>();
         priorityQueue = new PriorityQueue<>();
     }
 
     public static void main(String[] args) throws Exception {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(args[0])))) {
-            WalkRouter walkRouter = new WalkRouter(bufferedReader);
+        try (WalkRouter walkRouter = new WalkRouter(new BufferedReader(new FileReader(new File(args[0]))))) {
             walkRouter.parseURL();
 
-            Node startNode = walkRouter.parseInputNodes(args[1]);
-            Node endNode = walkRouter.parseInputNodes(args[2]);
-            walkRouter.findShortestDistanceBetweenNodes(startNode, endNode);
+            if (args.length > 1) {
+                Node startNode = walkRouter.parseInputNodes(args[1]);
+                Node endNode = walkRouter.parseInputNodes(args[2]);
+                walkRouter.findShortestDistanceBetweenNodes(startNode, endNode);
+            }
+            walkRouter.processMoreShortestPaths();
+        }
+    }
+
+    private void processMoreShortestPaths() {
+        String exitString = "*";
+        String continueString = "To calculate shortest path between two nodes, input comma-separated node ids. To end, enter \"" + exitString + "\"";
+        System.out.println(continueString);
+        String line;
+        while (scanner.hasNext() && !(line = scanner.nextLine()).equals(exitString)) {
+            String[] scannerInput = line.split("[\\s]*,[\\s]*");
+            System.out.println(scannerInput[0] + " " + scannerInput[1]);
+            Node startNode = parseInputNodes(scannerInput[0]);
+            Node endNode = parseInputNodes(scannerInput[1]);
+            findShortestDistanceBetweenNodes(startNode, endNode);
+            System.out.println(continueString);
         }
     }
 
@@ -55,7 +75,7 @@ public class WalkRouter {
     }
 
     private void findShortestDistanceBetweenNodes(Node startNode, Node endNode) {
-        startNode.setDistance(0);
+        resetNodeDistances(startNode);
         priorityQueue.add(startNode);
         try {
             while (priorityQueue.peek() != null && priorityQueue.peek() != endNode) {
@@ -76,6 +96,15 @@ public class WalkRouter {
         } catch (NullPointerException e) {
             throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" + startNode.getId() + "] and [" + endNode.getId() + "].");
         }
+    }
+
+    private void resetNodeDistances(Node startNode) {
+        priorityQueue = new PriorityQueue<>();
+        visitedNodes = new HashSet<>();
+        for (Map.Entry<Long, Node> entry : nodeMap.entrySet()) {
+            Node.reset(entry.getValue());
+        }
+        startNode.setDistance(0);
     }
 
     private void evaluateAdjacentNodes(Node currentNode) {
@@ -130,4 +159,9 @@ public class WalkRouter {
         return new Node(Long.parseLong(readLine));
     }
 
+    @Override
+    public void close() throws Exception {
+        bufferedReader.close();
+        scanner.close();
+    }
 }

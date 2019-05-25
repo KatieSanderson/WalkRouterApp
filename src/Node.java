@@ -28,6 +28,11 @@ class Node implements Comparable<Node> {
         return copyPath;
     }
 
+    public static void reset(Node node) {
+        node.setPath(new ArrayList<>());
+        node.setDistance(Long.MAX_VALUE);
+    }
+
     public String printPath() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < path.size(); i++) {
