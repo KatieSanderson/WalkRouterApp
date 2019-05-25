@@ -27,11 +27,11 @@ class Edge {
         }
     }
 
-    public Node getNode1() {
+    Node getNode1() {
         return node1;
     }
 
-    public Node getNode2() {
+    Node getNode2() {
         return node2;
     }
 

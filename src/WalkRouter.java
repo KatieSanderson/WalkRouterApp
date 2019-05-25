@@ -8,7 +8,7 @@ import java.util.*;
  * Required arguments: valid file and two valid OSM nodes
  * System output: shortest walking distance between input OSM nodes
  *
- * Valid file will consist of the format
+ * Valid file will consist of the format:
  * <number of nodes>
  * <OSM id of node>
  * ...
@@ -20,7 +20,7 @@ import java.util.*;
  *
  * Valid OSM Nodes are nodes with <OSM id of node> in file input and can be connected via edges (<from node OSM id> <to node OSM id> <length in meters>) in input
  *
- * Input is parsed into {@link Node} and {@link Edge} and computes the shortest walking distance in meters between two given OSM nodes in the graph (assuming all edges are walkable)
+ * Input is parsed into {@link Node} and {@link Edge}. The shortest walking distance in meters is computed between two given OSM nodes in the graph (assuming all edges are walkable)
  *
  *
  */
@@ -30,66 +30,69 @@ public class WalkRouter {
     private final BufferedReader bufferedReader;
     private final Map<Long, Node> nodeMap;
     private final Set<Node> visitedNodes;
-    private final PriorityQueue<Node> queue;
+    private final PriorityQueue<Node> priorityQueue;
 
     private WalkRouter(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
         nodeMap = new HashMap<>();
         visitedNodes = new HashSet<>();
-        queue = new PriorityQueue<>();
+        priorityQueue = new PriorityQueue<>();
     }
 
     public static void main(String[] args) throws Exception {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new URL(args[0]).openStream()))) {
             WalkRouter walkRouter = new WalkRouter(bufferedReader);
-            // input parsing
             walkRouter.parseURL();
 
-            System.out.println(walkRouter.findShortestPathBetweenNodes(
-                    walkRouter.nodeMap.get(Long.parseLong(args[1])), walkRouter.nodeMap.get(Long.parseLong(args[2]))));
+            Node startNode = walkRouter.parseInputNodes(args[1]);
+            Node endNode = walkRouter.parseInputNodes(args[2]);
+            System.out.println(walkRouter.findShortestPathBetweenNodes(startNode, endNode));
+        }
+    }
+
+    private Node parseInputNodes(String inputNodeId) {
+        try {
+            return nodeMap.get(Long.parseLong(inputNodeId));
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("Invalid input node. No node with id [" + inputNodeId + "] in file.");
         }
     }
 
     private long findShortestPathBetweenNodes(Node startNode, Node endNode) {
         startNode.setDistance(0);
-        queue.add(startNode);
+        priorityQueue.add(startNode);
         try {
-            while (queue.peek() != endNode) {
-                if (queue.peek() == null) {
-                    throw new NullPointerException();
-                }
-                Node currentNode = queue.poll();
-                // possible for several references to same node in queue due to optimizing distance without removing old reference due to time complexity
+            while (priorityQueue.peek() != null && priorityQueue.peek() != endNode) {
+                Node currentNode = priorityQueue.poll();
                 if (!visitedNodes.contains(currentNode)) {
                     visitedNodes.add(currentNode);
-                    checkNeighbours(currentNode);
+                    evaluateAdjacentNodes(currentNode);
                 }
             }
-            if (queue.peek() == null) {
+            if (priorityQueue.peek() == null) {
                 throw new NullPointerException();
             }
-            return queue.poll().getDistance();
-        } catch (NoSuchElementException | NullPointerException e) {
+            return priorityQueue.poll().getDistance();
+        } catch (NullPointerException e) {
             throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" + startNode.getId() + "] and [" + endNode.getId() + "].");
         }
     }
 
-    private void checkNeighbours(Node currentNode) {
+    private void evaluateAdjacentNodes(Node currentNode) {
         for (Edge edge : currentNode.getEdges()) {
-            // checks other (not currentNode) node in edge pair (currentNode)
             Node otherNodeInEdge = edge.getOtherNode(currentNode);
             if (!visitedNodes.contains(otherNodeInEdge)) {
-                optimizeDistance(currentNode, edge, otherNodeInEdge);
+                updateNodeDistance(currentNode, edge, otherNodeInEdge);
             }
         }
     }
 
-    private void optimizeDistance(Node currentNode, Edge edge, Node nextNode) {
+    private void updateNodeDistance(Node currentNode, Edge edge, Node nextNode) {
         long calculatedDistance = currentNode.getDistance() + edge.getDistance();
         if (calculatedDistance < nextNode.getDistance()) {
             nextNode.setDistance(calculatedDistance);
-            // node is added to queue again to ensure priority queue has node with optimized distance
-            queue.add(nextNode);
+            // nextNode is added to priorityQueue again (required to ensure priorityQueue includes nextNode's new distance)
+            priorityQueue.add(nextNode);
         }
     }
 
