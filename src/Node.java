@@ -9,12 +9,51 @@ class Node implements Comparable<Node> {
 
     private final long id;
     private final List<Edge> edges;
+    private List<Node> path;
     private long distance;
 
     Node(long id) {
         this.id = id;
         edges = new ArrayList<>();
+        path = new ArrayList<>();
+        path.add(this);
         distance = Long.MAX_VALUE;
+    }
+
+    public static List<Node> copyPath(List<Node> path) {
+        List<Node> copyPath = new ArrayList<>();
+        for (Node node : path) {
+            copyPath.add(node);
+        }
+        return copyPath;
+    }
+
+    public String printPath() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < path.size(); i++) {
+            stringBuilder.append(path.get(i).getId()).append(" ");
+            if (i % 5 == 4) {
+                stringBuilder.append("\n");
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    long getId() {
+        return id;
+    }
+
+    List<Edge> getEdges() {
+        return edges;
+    }
+
+    public List<Node> getPath() {
+        return path;
+    }
+
+    public void setPath(List<Node> path) {
+        this.path = path;
+        path.add(this);
     }
 
     long getDistance() {
@@ -23,14 +62,6 @@ class Node implements Comparable<Node> {
 
     void setDistance(long distance) {
         this.distance = distance;
-    }
-
-    List<Edge> getEdges() {
-        return edges;
-    }
-
-    long getId() {
-        return id;
     }
 
     @Override

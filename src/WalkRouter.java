@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Required arguments: valid file and two valid OSM nodes
- * Printed to console: shortest walking distance between input OSM nodes
+ * Printed to console: shortest walking path and distance between input OSM nodes
  *
  * Valid file will consist of the format:
  * <number of nodes>
@@ -41,7 +41,7 @@ public class WalkRouter {
 
             Node startNode = walkRouter.parseInputNodes(args[1]);
             Node endNode = walkRouter.parseInputNodes(args[2]);
-            System.out.println(walkRouter.findShortestDistanceBetweenNodes(startNode, endNode));
+            walkRouter.findShortestDistanceBetweenNodes(startNode, endNode);
         }
     }
 
@@ -54,7 +54,7 @@ public class WalkRouter {
         }
     }
 
-    private long findShortestDistanceBetweenNodes(Node startNode, Node endNode) {
+    private void findShortestDistanceBetweenNodes(Node startNode, Node endNode) {
         startNode.setDistance(0);
         priorityQueue.add(startNode);
         try {
@@ -68,7 +68,11 @@ public class WalkRouter {
             if (priorityQueue.peek() == null) {
                 throw new NullPointerException();
             }
-            return priorityQueue.poll().getDistance();
+            Node endNodeAfterParse = priorityQueue.poll();
+            System.out.println("Shortest distance between " +
+                    startNode.getId() + " and " + endNode.getId() +
+                    " is " + endNodeAfterParse.getDistance() +
+                    " achieved with path: \n" + endNodeAfterParse.printPath());
         } catch (NullPointerException e) {
             throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" + startNode.getId() + "] and [" + endNode.getId() + "].");
         }
@@ -87,6 +91,7 @@ public class WalkRouter {
         long calculatedDistance = currentNode.getDistance() + edge.getDistance();
         if (calculatedDistance < nextNode.getDistance()) {
             nextNode.setDistance(calculatedDistance);
+            nextNode.setPath(Node.copyPath(currentNode.getPath()));
             // nextNode is added to priorityQueue again (required to ensure priorityQueue includes nextNode's new distance)
             priorityQueue.add(nextNode);
         }

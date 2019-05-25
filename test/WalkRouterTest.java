@@ -8,8 +8,8 @@ import java.io.PrintStream;
 
 public class WalkRouterTest {
 
-    private static final String INPUT_FILE_STRING = "citymapper-coding-test-graph.dat";
-    private static final String TEST_FILE_STRING = "test\\citymapper-coding-test-graph-simple.dat";
+    private static final String INPUT_FILE_STRING = "test\\test-graph-real-data.dat";
+    private static final String TEST_FILE_STRING = "test\\test-graph-simple.dat";
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -23,7 +23,7 @@ public class WalkRouterTest {
         String[] inputArr = {INPUT_FILE_STRING, "1522658960", "1522658960"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(0 + "\r\n", outContent.toString());
+        Assert.assertEquals(Integer.toString(0), outContent.toString().split(" ")[7]);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class WalkRouterTest {
         String[] inputArr = {INPUT_FILE_STRING, "1522658960", "439984987"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(1 + "\r\n", outContent.toString());
+        Assert.assertEquals(Integer.toString(1), outContent.toString().split(" ")[7]);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class WalkRouterTest {
         String[] inputArr = {INPUT_FILE_STRING, "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(210 + "\r\n", outContent.toString());
+        Assert.assertEquals(Integer.toString(210), outContent.toString().split(" ")[7]);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class WalkRouterTest {
         String[] inputArr = {TEST_FILE_STRING, "1", "4"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(102 + "\r\n", outContent.toString());
+        Assert.assertEquals(Integer.toString(102), outContent.toString().split(" ")[7]);
     }
 
     @Test (expected = IllegalArgumentException.class)
