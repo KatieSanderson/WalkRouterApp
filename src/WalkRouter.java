@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Required arguments: valid file and two valid OSM nodes
- * System output: shortest walking distance between input OSM nodes
+ * Printed to console: shortest walking distance between input OSM nodes
  *
  * Valid file will consist of the format:
  * <number of nodes>
@@ -18,8 +18,6 @@ import java.util.*;
  * Valid OSM Nodes are nodes with <OSM id of node> in file input and can be connected via edges (<from node OSM id> <to node OSM id> <length in meters>) in input
  *
  * Input is parsed into {@link Node} and {@link Edge}. The shortest walking distance in meters is computed between two given OSM nodes in the graph (assuming all edges are walkable)
- *
- *
  */
 
 public class WalkRouter {
@@ -37,31 +35,26 @@ public class WalkRouter {
     }
 
     public static void main(String[] args) throws Exception {
-        FileReader fileReader;
-        try {
-            fileReader = new FileReader(new File(args[0]));
-        } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException("Invalid file input. No file [" + args[0] + "].");
-        }
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(args[0])))) {
             WalkRouter walkRouter = new WalkRouter(bufferedReader);
             walkRouter.parseURL();
 
             Node startNode = walkRouter.parseInputNodes(args[1]);
             Node endNode = walkRouter.parseInputNodes(args[2]);
-            System.out.println(walkRouter.findShortestPathBetweenNodes(startNode, endNode));
+            System.out.println(walkRouter.findShortestDistanceBetweenNodes(startNode, endNode));
         }
     }
 
     private Node parseInputNodes(String inputNodeId) {
-        try {
-            return nodeMap.get(Long.parseLong(inputNodeId));
-        } catch (NullPointerException e) {
+        Node node = nodeMap.get(Long.parseLong(inputNodeId));
+        if (node != null) {
+            return node;
+        } else {
             throw new IllegalArgumentException("Invalid input node. No node with id [" + inputNodeId + "] in file.");
         }
     }
 
-    private long findShortestPathBetweenNodes(Node startNode, Node endNode) {
+    private long findShortestDistanceBetweenNodes(Node startNode, Node endNode) {
         startNode.setDistance(0);
         priorityQueue.add(startNode);
         try {

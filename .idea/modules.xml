@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CityMapperApp.iml" filepath="$PROJECT_DIR$/CityMapperApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WalkRouterApp.iml" filepath="$PROJECT_DIR$/WalkRouterApp.iml" />
     </modules>
   </component>
 </project>
