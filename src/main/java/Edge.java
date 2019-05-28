@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Each Edge object represents the distance between OSM nodes
  *
@@ -17,9 +19,9 @@ class Edge {
     }
 
     Node getOtherNode(Node node) {
-        if (node == node1) {
+        if (Objects.equals(node, node1)) {
             return node2;
-        } else if (node == node2) {
+        } else if (Objects.equals(node, node2)) {
             return node1;
         } else {
             throw new IllegalArgumentException("Invalid");

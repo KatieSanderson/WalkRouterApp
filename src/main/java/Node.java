@@ -31,6 +31,7 @@ class Node implements Comparable<Node> {
         this.id = nextNode.id;
         this.edges = nextNode.edges;
         this.distance = distance;
+        path = nextNode.getPath();
     }
 
     public static List<Node> copyPath(List<Node> path) {

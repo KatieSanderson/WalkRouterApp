@@ -78,7 +78,7 @@ public class WalkRouter implements AutoCloseable{
         resetNodeDistances(startNode);
         priorityQueue.add(startNode);
         try {
-            while (priorityQueue.peek() != null && priorityQueue.peek() != endNode) {
+            while (priorityQueue.peek() != null && !Objects.equals(priorityQueue.peek(), endNode)) {
                 Node currentNode = priorityQueue.poll();
                 if (!visitedNodes.contains(currentNode)) {
                     visitedNodes.add(currentNode);

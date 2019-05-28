@@ -2,9 +2,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
 
 public class WalkRouterTest {
 
@@ -15,6 +13,10 @@ public class WalkRouterTest {
 
     @Before
     public void setUpStreams() {
+        String input = "*";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
         System.setOut(new PrintStream(outContent));
     }
 
@@ -36,6 +38,7 @@ public class WalkRouterTest {
 
     @Test
     public void mainTest_notNeighbours() throws Exception {
+        ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
         String[] inputArr = {INPUT_FILE_STRING, "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
 
@@ -61,5 +64,7 @@ public class WalkRouterTest {
         String[] inputArr = {"", "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
     }
+
+    // todo add tests for system input
 
 }
