@@ -49,9 +49,6 @@ ASSUMPTIONS
 
 EXTENSIONS
 Additional features which may be considered:
-2. Capability for multiple shortest path requests on same graph (subsequent calls to findShortestDistanceBetweenNodes)
-    a. Would require all Nodes' distances reset (Long.MAX_VALUE for all Nodes except startNode, which is set to 0)
-    b. Would require user input to specify nodes for subsequent calls
 3. Capability to update graph without reloading graph (update Edge distances, add Edges and Nodes, etc.)
     a. Would require additional method and event to call it
 4. Capability for a desired route (visit a specific Node on route to endNode)

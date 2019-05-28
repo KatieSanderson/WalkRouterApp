@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Each Node object represents an OSM node, the connecting edges on that node, and the distance of this node from a given node (starting node in @WalkRouter)
@@ -18,6 +19,18 @@ class Node implements Comparable<Node> {
         path = new ArrayList<>();
         path.add(this);
         distance = Long.MAX_VALUE;
+    }
+
+    /**
+     * {@link Node #Node(Node nextNode, long distance} is used to copy a node with a new distance
+     * @param nextNode - node to be copied (except for distance parameter)
+     * @param distance - distance to be used for new node
+     */
+
+    public Node(Node nextNode, long distance) {
+        this.id = nextNode.id;
+        this.edges = nextNode.edges;
+        this.distance = distance;
     }
 
     public static List<Node> copyPath(List<Node> path) {
@@ -72,5 +85,21 @@ class Node implements Comparable<Node> {
     @Override
     public int compareTo(Node that) {
         return Long.compare(getDistance(), that.getDistance());
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Node node = (Node) obj;
+        return id == node.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

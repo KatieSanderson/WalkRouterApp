@@ -56,8 +56,8 @@ public class WalkRouter implements AutoCloseable{
         System.out.println(continueString);
         String line;
         while (scanner.hasNext() && !(line = scanner.nextLine()).equals(exitString)) {
+            // todo verify user input is acceptable
             String[] scannerInput = line.split("[\\s]*,[\\s]*");
-            System.out.println(scannerInput[0] + " " + scannerInput[1]);
             Node startNode = parseInputNodes(scannerInput[0]);
             Node endNode = parseInputNodes(scannerInput[1]);
             findShortestDistanceBetweenNodes(startNode, endNode);
@@ -121,8 +121,8 @@ public class WalkRouter implements AutoCloseable{
         if (calculatedDistance < nextNode.getDistance()) {
             nextNode.setDistance(calculatedDistance);
             nextNode.setPath(Node.copyPath(currentNode.getPath()));
-            // nextNode is added to priorityQueue again (required to ensure priorityQueue includes nextNode's new distance)
-            priorityQueue.add(nextNode);
+            // copy of nextNode with new distance is added to priorityQueue
+            priorityQueue.add(new Node(nextNode, calculatedDistance));
         }
     }
 
