@@ -11,6 +11,8 @@ public class WalkRouterTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
+    // todo add path checking to tests
+
     @Before
     public void setUpSystemOut() {
         System.setOut(new PrintStream(outContent));

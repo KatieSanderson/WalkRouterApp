@@ -56,11 +56,10 @@ public class WalkRouter implements AutoCloseable{
 
     private void findShortestDistanceBetweenNodes(List<Node> nodesInPath) {
         // todo implement queue with duplicle
-        Route route = new Route(nodesInPath.get(0), nodesInPath.get(nodesInPath.size() - 1));
-        long totalDistance = 0;
-        List<Node> path = new ArrayList<>();
+        Route route = new Route(nodesInPath);
+//        List<Node> path = new ArrayList<>();
         for (int i = 0; i < nodesInPath.size() - 1; i++) {
-            Route innerRoute = new Route(nodesInPath.get(i), nodesInPath.get(i + 1));
+            Route innerRoute = new Route(nodesInPath.subList(i, i + 2));
             resetNodeDistances(innerRoute.getStartNode());
             priorityQueue.add(innerRoute.getStartNode());
             try {
@@ -77,8 +76,8 @@ public class WalkRouter implements AutoCloseable{
                 Node endNodeAfterParse = priorityQueue.poll();
                 innerRoute.setDistance(endNodeAfterParse.getDistance());
                 innerRoute.setPath(endNodeAfterParse.getPath());
-                totalDistance += innerRoute.getDistance();
-                path.addAll(innerRoute.getPath());
+                route.addDistance(innerRoute.getDistance());
+                route.getPath().addAll(innerRoute.getPath());
             } catch (NullPointerException e) {
                 throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" +
                         innerRoute.getStartNode().getId() + "] and [" + innerRoute.getEndNode().getId() + "].");
@@ -86,8 +85,8 @@ public class WalkRouter implements AutoCloseable{
         }
         System.out.println("Shortest distance between " +
                 route.getStartNode().getId() + " and " + route.getEndNode().getId() +
-                " is " + totalDistance +
-                " achieved with path: \n" + path.get(path.size() - 1).printPath());
+                " is " + route.getDistance() +
+                " achieved with path: \n" + route.getPath().get(route.getPath().size() - 1).printPath());
     }
 
     private void resetNodeDistances(Node startNode) {

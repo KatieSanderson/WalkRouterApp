@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d103e976-6fef-4571-b617-4bdf198d2f02" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WalkRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WalkRouter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/WalkRouterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/WalkRouterTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="129" column="51" selection-start-line="129" selection-start-column="51" selection-end-line="129" selection-end-column="51" />
+            <state relative-caret-position="284">
+              <caret line="88" column="79" selection-start-line="88" selection-start-column="79" selection-end-line="88" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -30,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Route.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="284">
+              <caret line="27" column="44" lean-forward="true" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -81,20 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/io/ByteArrayInputStream.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1483">
-              <caret line="104" column="11" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
+            <state relative-caret-position="142">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -143,8 +135,8 @@
         <option value="$PROJECT_DIR$/test/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/Route.java" />
-        <option value="$PROJECT_DIR$/src/main/java/WalkRouter.java" />
         <option value="$PROJECT_DIR$/test/WalkRouterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/WalkRouter.java" />
       </list>
     </option>
   </component>
@@ -208,7 +200,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559154431705" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559155243173" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -235,6 +227,14 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.All in WalkRouterApp">
+    <configuration name="WalkRouter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WalkRouter" />
+      <module name="WalkRouterApp" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\Katie\Dev\WalkRouterApp\test\test-graph-simple.dat 1 2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in WalkRouterApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WalkRouterApp" />
       <option name="PACKAGE_NAME" value="" />
@@ -261,16 +261,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WalkRouterTest.mainTest_stopoff" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="WalkRouterApp" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="WalkRouterTest" />
-      <option name="METHOD_NAME" value="mainTest_stopoff" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WalkRouterApp" />
       <option name="PACKAGE_NAME" value="" />
@@ -282,19 +272,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.WalkRouter" />
       <item itemvalue="JUnit.All in WalkRouterApp" />
       <item itemvalue="JUnit.WalkRouterTest" />
       <item itemvalue="JUnit.WalkRouterTest.mainTest_sameNode" />
-      <item itemvalue="JUnit.WalkRouterTest.mainTest_stopoff" />
       <item itemvalue="JUnit.WalkRouterTest.mainTest_subsequentShortestDistanceCalls" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in WalkRouterApp" />
+        <item itemvalue="Application.WalkRouter" />
         <item itemvalue="JUnit.WalkRouterTest.mainTest_subsequentShortestDistanceCalls" />
         <item itemvalue="JUnit.WalkRouterTest" />
         <item itemvalue="JUnit.WalkRouterTest.mainTest_sameNode" />
-        <item itemvalue="JUnit.WalkRouterTest.mainTest_stopoff" />
       </list>
     </recent_temporary>
   </component>
@@ -312,35 +302,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 14m 54s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="WalkRouterTest_mainTest_subsequentShortestDistanceCalls - 2019.05.29 at 19h 23m 57s.xml">
+      <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 17m 17s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="WalkRouterTest_mainTest_subsequentShortestDistanceCalls - 2019.05.29 at 19h 24m 08s.xml">
+      <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 17m 30s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="WalkRouterTest_mainTest_subsequentShortestDistanceCalls - 2019.05.29 at 19h 24m 19s.xml">
+      <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 18m 40s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="WalkRouterTest_mainTest_subsequentShortestDistanceCalls - 2019.05.29 at 19h 24m 36s.xml">
+      <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 18m 48s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="WalkRouterTest_mainTest_subsequentShortestDistanceCalls - 2019.05.29 at 19h 26m 54s.xml">
+      <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 19m 41s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="WalkRouterTest_mainTest_subsequentShortestDistanceCalls - 2019.05.29 at 19h 26m 57s.xml">
+      <configuration name="WalkRouterTest.mainTest_subsequentShortestDistanceCalls" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 20m 03s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 19h 27m 14s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 20m 12s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 19h 31m 47s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 21m 32s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 19h 33m 02s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_subsequentShortsetDistanceCalls - 2019.05.29 at 19h 21m 44s.xml">
-      <configuration name="WalkRouterTest.mainTest_subsequentShortsetDistanceCalls" configurationId="JUnit" />
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 19h 35m 00s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -442,13 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Route.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -484,13 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="129" column="51" selection-start-line="129" selection-start-column="51" selection-end-line="129" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/io/ByteArrayInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1483">
@@ -500,8 +476,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
+        <state relative-caret-position="142">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Route.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="27" column="44" lean-forward="true" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="88" column="79" selection-start-line="88" selection-start-column="79" selection-end-line="88" selection-end-column="79" />
         </state>
       </provider>
     </entry>

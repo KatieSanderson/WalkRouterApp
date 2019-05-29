@@ -3,24 +3,22 @@ import java.util.List;
 
 public class Route {
 
-    private final Node startNode;
-    private final Node endNode;
+    private final List<Node> nodes;
     private long distance;
     private List<Node> path;
 
-    public Route(Node startNode, Node endNode) {
-        this.startNode = startNode;
-        this.endNode = endNode;
+    public Route(List<Node> nodes) {
+        this.nodes = nodes;
         distance = 0;
         path = new ArrayList<>();
     }
 
     public Node getStartNode() {
-        return startNode;
+        return nodes.get(0);
     }
 
     public Node getEndNode() {
-        return endNode;
+        return nodes.get(nodes.size() - 1);
     }
 
     public long getDistance() {
@@ -37,5 +35,9 @@ public class Route {
 
     public void setPath(List<Node> path) {
         this.path = path;
+    }
+
+    public void addDistance(long distance) {
+        this.distance += distance;
     }
 }
