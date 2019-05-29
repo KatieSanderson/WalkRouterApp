@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -79,17 +82,16 @@ public class WalkRouter implements AutoCloseable{
 
     private void findShortestDistanceBetweenNodes(List<Node> nodesInPath) {
         // todo implement queue with duplicle
-        List<Node> path = new ArrayList<>();
-        long totalDistance = 0;
         Node startNode = nodesInPath.get(0);
         Node endNode = nodesInPath.get(nodesInPath.size() - 1);
+        long totalDistance = 0;
+        List<Node> path = new ArrayList<>();
         for (int i = 0; i < nodesInPath.size() - 1; i++) {
-            Node innerStartNode = nodesInPath.get(i);
-            Node innerEndNode = nodesInPath.get(i + 1);
-            resetNodeDistances(innerStartNode);
-            priorityQueue.add(innerStartNode);
+            Route innerRoute = new Route(nodesInPath.get(i), nodesInPath.get(i + 1));
+            resetNodeDistances(innerRoute.getStartNode());
+            priorityQueue.add(innerRoute.getStartNode());
             try {
-                while (priorityQueue.peek() != null && !Objects.equals(priorityQueue.peek(), innerEndNode)) {
+                while (priorityQueue.peek() != null && !Objects.equals(priorityQueue.peek(), innerRoute.getEndNode())) {
                     Node currentNode = priorityQueue.poll();
                     if (!visitedNodes.contains(currentNode)) {
                         visitedNodes.add(currentNode);
@@ -100,16 +102,21 @@ public class WalkRouter implements AutoCloseable{
                     throw new NullPointerException();
                 }
                 Node endNodeAfterParse = priorityQueue.poll();
-                totalDistance += endNodeAfterParse.getDistance();
-                path.addAll(endNodeAfterParse.getPath());
+                innerRoute.setDistance(endNodeAfterParse.getDistance());
+                innerRoute.setPath(endNodeAfterParse.getPath());
+                totalDistance += innerRoute.getDistance();
+                path.addAll(innerRoute.getPath());
             } catch (NullPointerException e) {
-                throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" + innerStartNode.getId() + "] and [" + innerEndNode.getId() + "].");
+                throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" +
+                        innerRoute.getStartNode().getId() + "] and [" + innerRoute.getEndNode().getId() + "].");
             }
         }
+        StringBuilder pathString = new StringBuilder();
+        path.forEach(e -> pathString.append(e.printPath()));
         System.out.println("Shortest distance between " +
                 startNode.getId() + " and " + endNode.getId() +
                 " is " + totalDistance +
-                " achieved with path: \n" + path);
+                " achieved with path: \n" + pathString);
     }
 
     private void resetNodeDistances(Node startNode) {

@@ -53,6 +53,14 @@ public class WalkRouterTest {
         Assert.assertEquals(Integer.toString(102), outContent.toString().split(" ")[7]);
     }
 
+    @Test
+    public void mainTest_stopoff() throws Exception {
+        String[] inputArr = {TEST_FILE_STRING, "1", "2", "3"};
+        WalkRouter.main(inputArr);
+
+        Assert.assertEquals(Integer.toString(501), outContent.toString().split(" ")[7]);
+    }
+
     @Test (expected = IllegalArgumentException.class)
     public void mainTest_invalidNode() throws Exception {
         String[] inputArr = {INPUT_FILE_STRING, "", "1522658933"};
