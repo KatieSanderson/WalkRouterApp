@@ -111,12 +111,10 @@ public class WalkRouter implements AutoCloseable{
                         innerRoute.getStartNode().getId() + "] and [" + innerRoute.getEndNode().getId() + "].");
             }
         }
-        StringBuilder pathString = new StringBuilder();
-        path.forEach(e -> pathString.append(e.printPath()));
         System.out.println("Shortest distance between " +
                 startNode.getId() + " and " + endNode.getId() +
                 " is " + totalDistance +
-                " achieved with path: \n" + pathString);
+                " achieved with path: \n" + path.get(path.size() - 1).printPath());
     }
 
     private void resetNodeDistances(Node startNode) {
