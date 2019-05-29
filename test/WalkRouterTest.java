@@ -16,6 +16,12 @@ public class WalkRouterTest {
         System.setOut(new PrintStream(outContent));
     }
 
+    /**
+     * {@link WalkRouterTest #setUpNoUserInput} is called when a test does not test user input
+     *
+     * System.in is wrapped to input the exit string to exit program
+     */
+
     public void setUpNoUserInput() {
         String input = "*";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -68,6 +74,19 @@ public class WalkRouterTest {
         Assert.assertEquals(Integer.toString(4), outContent.toString().split(" ")[7]);
     }
 
+    @Test
+    public void mainTest_subsequentShortestDistanceCalls() throws Exception {
+        String input = "1, 2" + "\n*";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String[] inputArr = {TEST_FILE_SMALL_STRING, "1", "3"};
+        WalkRouter.main(inputArr);
+
+        String[] outContentByLine = outContent.toString().split("\r");
+        Assert.assertEquals(Integer.toString(2), outContentByLine[0].split(" ")[7]);
+        Assert.assertEquals(Integer.toString(1), outContentByLine[2].split(" ")[7]);
+    }
+
     @Test (expected = IllegalArgumentException.class)
     public void mainTest_invalidNode() throws Exception {
         String[] inputArr = {TEST_FILE_LARGE_STRING, "", "1522658933"};
@@ -79,7 +98,4 @@ public class WalkRouterTest {
         String[] inputArr = {"", "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
     }
-
-    // todo add tests for system input
-
 }
