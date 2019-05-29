@@ -24,7 +24,7 @@ public class WalkRouterTest {
      * System.in is wrapped to input the exit string to exit program
      */
 
-    public void setUpNoUserInput() {
+    private void setUpNoUserInput() {
         String input = "*";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -51,7 +51,6 @@ public class WalkRouterTest {
     @Test
     public void mainTest_notNeighbours() throws Exception {
         setUpNoUserInput();
-        ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
 

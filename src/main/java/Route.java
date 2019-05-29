@@ -1,43 +1,43 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Route {
+class Route {
 
     private final List<Node> nodes;
     private long distance;
     private List<Node> path;
 
-    public Route(List<Node> nodes) {
+    Route(List<Node> nodes) {
         this.nodes = nodes;
         distance = 0;
         path = new ArrayList<>();
     }
 
-    public Node getStartNode() {
+    Node getStartNode() {
         return nodes.get(0);
     }
 
-    public Node getEndNode() {
+    Node getEndNode() {
         return nodes.get(nodes.size() - 1);
     }
 
-    public long getDistance() {
+    long getDistance() {
         return distance;
     }
 
-    public void setDistance(long distance) {
+    void setDistance(long distance) {
         this.distance = distance;
     }
 
-    public List<Node> getPath() {
+    List<Node> getPath() {
         return path;
     }
 
-    public void setPath(List<Node> path) {
+    void setPath(List<Node> path) {
         this.path = path;
     }
 
-    public void addDistance(long distance) {
+    void addDistance(long distance) {
         this.distance += distance;
     }
 }

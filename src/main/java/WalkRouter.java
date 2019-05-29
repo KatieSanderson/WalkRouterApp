@@ -126,8 +126,8 @@ public class WalkRouter implements AutoCloseable{
             // todo verify user input is acceptable
             String[] scannerInput = line.split("[\\s]*,[\\s]*");
             List<Node> nodesInPath = new ArrayList<>();
-            for (int i = 0; i < scannerInput.length; i++) {
-                nodesInPath.add(parseInputNode(scannerInput[i]));
+            for (String str : scannerInput) {
+                nodesInPath.add(parseInputNode(str));
             }
             findShortestDistanceBetweenNodes(nodesInPath);
             System.out.println(continueString);

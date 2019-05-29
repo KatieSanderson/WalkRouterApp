@@ -46,8 +46,3 @@ ASSUMPTIONS
     d. <number of edges>: [1, 2^31 - 1]
         - Lower bound is 1; 1 edge is required to run program without thrown exceptions
         - Upper bound is 2^31 - 1; large capacity for values and improbability of requiring larger values to represent number of edges
-
-EXTENSIONS
-Additional features which may be considered:
-4. Capability for a desired route (visit a specific Node on route to endNode)
-    a. Would require two internal findShortestDistanceBetweenNodes calls: startNode to middleNode and middleNode to endNode

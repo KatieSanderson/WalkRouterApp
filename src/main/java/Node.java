@@ -34,20 +34,16 @@ class Node implements Comparable<Node> {
         path = nextNode.getPath();
     }
 
-    public static List<Node> copyPath(List<Node> path) {
-        List<Node> copyPath = new ArrayList<>();
-        for (Node node : path) {
-            copyPath.add(node);
-        }
-        return copyPath;
+    static List<Node> copyPath(List<Node> path) {
+        return new ArrayList<>(path);
     }
 
-    public static void reset(Node node) {
+    static void reset(Node node) {
         node.setPath(new ArrayList<>());
         node.setDistance(Long.MAX_VALUE);
     }
 
-    public String printPath() {
+    String printPath() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < path.size(); i++) {
             stringBuilder.append(path.get(i).getId()).append(" ");
@@ -66,11 +62,11 @@ class Node implements Comparable<Node> {
         return edges;
     }
 
-    public List<Node> getPath() {
+    List<Node> getPath() {
         return path;
     }
 
-    public void setPath(List<Node> path) {
+    void setPath(List<Node> path) {
         this.path = path;
         path.add(this);
     }

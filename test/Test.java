@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.PriorityQueue;
 
 public class Test {
@@ -27,9 +28,9 @@ public class Test {
 
         // We poll 3 times. We expect to pick 3, 7 and 8.
         // The second 3 may appear or not, we do not care.
-        System.out.println(pq.poll().value);
-        System.out.println(pq.poll().value);
-        System.out.println(pq.poll().value);
+        System.out.println(Objects.requireNonNull(pq.poll()).value);
+        System.out.println(Objects.requireNonNull(pq.poll()).value);
+        System.out.println(Objects.requireNonNull(pq.poll()).value);
     }
 
     class Node {
