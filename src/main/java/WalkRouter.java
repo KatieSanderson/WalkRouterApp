@@ -46,7 +46,7 @@ public class WalkRouter implements AutoCloseable{
             if (args.length > 1) {
                 List<Node> nodesInPath = new ArrayList<>();
                 for (int i = 1; i < args.length; i++) {
-                    nodesInPath.add(walkRouter.parseInputNodes(args[i]));
+                    nodesInPath.add(walkRouter.parseInputNode(args[i]));
                 }
                 walkRouter.findShortestDistanceBetweenNodes(nodesInPath);
             }
@@ -54,36 +54,9 @@ public class WalkRouter implements AutoCloseable{
         }
     }
 
-    private void processMoreShortestPaths() {
-        String exitString = "*";
-        String continueString = "To calculate shortest path between two nodes, input comma-separated node ids. To end, enter \"" + exitString + "\"";
-        System.out.println(continueString);
-        String line;
-        while (scanner.hasNext() && !(line = scanner.nextLine()).equals(exitString)) {
-            // todo verify user input is acceptable
-            String[] scannerInput = line.split("[\\s]*,[\\s]*");
-            List<Node> nodesInPath = new ArrayList<>();
-            for (int i = 0; i < scannerInput.length; i++) {
-                nodesInPath.add(parseInputNodes(scannerInput[i]));
-            }
-            findShortestDistanceBetweenNodes(nodesInPath);
-            System.out.println(continueString);
-        }
-    }
-
-    private Node parseInputNodes(String inputNodeId) {
-        Node node = nodeMap.get(Long.parseLong(inputNodeId));
-        if (node != null) {
-            return node;
-        } else {
-            throw new IllegalArgumentException("Invalid input node. No node with id [" + inputNodeId + "] in file.");
-        }
-    }
-
     private void findShortestDistanceBetweenNodes(List<Node> nodesInPath) {
         // todo implement queue with duplicle
-        Node startNode = nodesInPath.get(0);
-        Node endNode = nodesInPath.get(nodesInPath.size() - 1);
+        Route route = new Route(nodesInPath.get(0), nodesInPath.get(nodesInPath.size() - 1));
         long totalDistance = 0;
         List<Node> path = new ArrayList<>();
         for (int i = 0; i < nodesInPath.size() - 1; i++) {
@@ -112,7 +85,7 @@ public class WalkRouter implements AutoCloseable{
             }
         }
         System.out.println("Shortest distance between " +
-                startNode.getId() + " and " + endNode.getId() +
+                route.getStartNode().getId() + " and " + route.getEndNode().getId() +
                 " is " + totalDistance +
                 " achieved with path: \n" + path.get(path.size() - 1).printPath());
     }
@@ -145,6 +118,32 @@ public class WalkRouter implements AutoCloseable{
         }
     }
 
+    private void processMoreShortestPaths() {
+        String exitString = "*";
+        String continueString = "To calculate shortest path between two nodes, input comma-separated node ids. To end, enter \"" + exitString + "\"";
+        System.out.println(continueString);
+        String line;
+        while (scanner.hasNext() && !(line = scanner.nextLine()).equals(exitString)) {
+            // todo verify user input is acceptable
+            String[] scannerInput = line.split("[\\s]*,[\\s]*");
+            List<Node> nodesInPath = new ArrayList<>();
+            for (int i = 0; i < scannerInput.length; i++) {
+                nodesInPath.add(parseInputNode(scannerInput[i]));
+            }
+            findShortestDistanceBetweenNodes(nodesInPath);
+            System.out.println(continueString);
+        }
+    }
+
+    private Node parseInputNode(String inputNodeId) {
+        Node node = nodeMap.get(Long.parseLong(inputNodeId));
+        if (node != null) {
+            return node;
+        } else {
+            throw new IllegalArgumentException("Invalid input node. No node with id [" + inputNodeId + "] in file.");
+        }
+    }
+
     private void parseURL() throws IOException {
         // parse and add nodes to map
         int numNodes = Integer.parseInt(bufferedReader.readLine());
@@ -162,10 +161,6 @@ public class WalkRouter implements AutoCloseable{
         }
     }
 
-    private void addEdgeToNode(Edge edge, Node node) {
-        node.getEdges().add(edge);
-    }
-
     private Edge parseEdge(String edgeData) {
         String[] edgeDataSplit = edgeData.split(" ");
         Node node1 = nodeMap.get(Long.parseLong(edgeDataSplit[0]));
@@ -176,6 +171,10 @@ public class WalkRouter implements AutoCloseable{
 
     private Node parseNode(String readLine) {
         return new Node(Long.parseLong(readLine));
+    }
+
+    private void addEdgeToNode(Edge edge, Node node) {
+        node.getEdges().add(edge);
     }
 
     @Override

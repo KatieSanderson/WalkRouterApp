@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d103e976-6fef-4571-b617-4bdf198d2f02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/WalkRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WalkRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/WalkRouterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/WalkRouterTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="113" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="244">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -29,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Route.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="238">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -47,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="240">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -56,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="125">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
             </state>
           </provider>
         </entry>
@@ -83,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-254">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="267">
+              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -128,12 +129,12 @@
         <option value="$PROJECT_DIR$/src/Node.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/README" />
-        <option value="$PROJECT_DIR$/test/WalkRouterTest.java" />
         <option value="$PROJECT_DIR$/test/test-graph-real-data.dat" />
         <option value="$PROJECT_DIR$/test/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/Router.java" />
         <option value="$PROJECT_DIR$/src/main/java/Route.java" />
         <option value="$PROJECT_DIR$/src/main/java/WalkRouter.java" />
+        <option value="$PROJECT_DIR$/test/WalkRouterTest.java" />
       </list>
     </option>
   </component>
@@ -197,7 +198,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559142456435" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559151697956" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -223,7 +224,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WalkRouter">
+  <component name="RunManager" selected="JUnit.All in WalkRouterApp">
     <configuration name="WalkRouter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WalkRouter" />
       <module name="WalkRouterApp" />
@@ -277,9 +278,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WalkRouter" />
-        <item itemvalue="JUnit.WalkRouterTest.mainTest_stopoff" />
         <item itemvalue="JUnit.All in WalkRouterApp" />
+        <item itemvalue="JUnit.WalkRouterTest.mainTest_stopoff" />
+        <item itemvalue="Application.WalkRouter" />
         <item itemvalue="JUnit.WalkRouterTest" />
         <item itemvalue="JUnit.WalkRouterTest.mainTest_sameNode" />
       </list>
@@ -299,15 +300,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WalkRouterTest_mainTest_neighbours - 2019.05.28 at 20h 35m 44s.xml">
-      <configuration name="WalkRouterTest.mainTest_neighbours" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_neighbours - 2019.05.28 at 20h 36m 06s.xml">
-      <configuration name="WalkRouterTest.mainTest_neighbours" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WalkRouterTest - 2019.05.28 at 21h 08m 21s.xml">
-      <configuration name="WalkRouterTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="WalkRouterTest_mainTest_sameNode - 2019.05.28 at 21h 08m 21s.xml">
       <configuration name="WalkRouterTest.mainTest_sameNode" configurationId="JUnit" />
     </history-entry>
@@ -327,6 +319,15 @@
       <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
     <history-entry file="WalkRouterTest_mainTest_stopoff - 2019.05.29 at 15h 33m 50s.xml">
+      <configuration name="WalkRouterTest.mainTest_stopoff" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 18h 29m 03s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WalkRouterTest_mainTest_stopoff - 2019.05.29 at 18h 32m 56s.xml">
+      <configuration name="WalkRouterTest.mainTest_stopoff" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WalkRouterTest_mainTest_stopoff - 2019.05.29 at 18h 34m 09s.xml">
       <configuration name="WalkRouterTest.mainTest_stopoff" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -394,10 +395,10 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/WalkRouter.java</url>
-          <line>94</line>
+          <url>file://$PROJECT_DIR$/test/WalkRouterTest.java</url>
+          <line>58</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -427,38 +428,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-254">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test-graph-real-data.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="68463" column="19" selection-start-line="68463" selection-start-column="9" selection-end-line="68463" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Route.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -469,24 +463,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Route.java">
+    <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="267">
+          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="255">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="113" selection-start-line="113" selection-end-line="113" />
+        <state relative-caret-position="244">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
         </state>
       </provider>
     </entry>
