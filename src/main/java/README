@@ -49,7 +49,5 @@ ASSUMPTIONS
 
 EXTENSIONS
 Additional features which may be considered:
-3. Capability to update graph without reloading graph (update Edge distances, add Edges and Nodes, etc.)
-    a. Would require additional method and event to call it
 4. Capability for a desired route (visit a specific Node on route to endNode)
     a. Would require two internal findShortestDistanceBetweenNodes calls: startNode to middleNode and middleNode to endNode

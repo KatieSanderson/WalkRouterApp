@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d103e976-6fef-4571-b617-4bdf198d2f02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WalkRouterApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WalkRouterApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WalkRouterApp/Edge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WalkRouterApp/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WalkRouterApp/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WalkRouterApp/WalkRouter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/WalkRouterApp/WalkRouterTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WalkRouter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/WalkRouterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/WalkRouterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WalkRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WalkRouter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="890">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="406">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
             </state>
           </provider>
         </entry>
@@ -43,7 +31,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="680">
               <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
@@ -52,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="561">
               <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
             </state>
           </provider>
@@ -61,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/README">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="647">
-              <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+            <state relative-caret-position="545">
+              <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -76,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            <state relative-caret-position="522">
+              <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -115,6 +103,8 @@
         <option value="$PROJECT_DIR$/src/Node.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/test/WalkRouterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/README" />
+        <option value="$PROJECT_DIR$/src/main/java/WalkRouter.java" />
       </list>
     </option>
   </component>
@@ -126,16 +116,15 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="560" />
-    <option name="width" value="1365" />
-    <option name="height" value="1040" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -158,6 +147,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -165,7 +155,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559074820631" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559140238199" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -183,7 +173,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.WalkRouterTest">
+  <component name="RunManager" selected="JUnit.All in WalkRouterApp">
     <configuration name="WalkRouter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WalkRouter" />
       <module name="WalkRouterApp" />
@@ -237,11 +227,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in WalkRouterApp" />
         <item itemvalue="JUnit.WalkRouterTest" />
         <item itemvalue="JUnit.WalkRouterTest.mainTest_sameNode" />
         <item itemvalue="JUnit.WalkRouterTest.mainTest_neighbours" />
         <item itemvalue="Application.WalkRouter" />
-        <item itemvalue="JUnit.All in WalkRouterApp" />
       </list>
     </recent_temporary>
   </component>
@@ -259,15 +249,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WalkRouterTest_mainTest_neighbours - 2019.05.28 at 20h 28m 06s.xml">
-      <configuration name="WalkRouterTest.mainTest_neighbours" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_neighbours - 2019.05.28 at 20h 28m 13s.xml">
-      <configuration name="WalkRouterTest.mainTest_neighbours" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_neighbours - 2019.05.28 at 20h 28m 38s.xml">
-      <configuration name="WalkRouterTest.mainTest_neighbours" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="WalkRouterTest_mainTest_neighbours - 2019.05.28 at 20h 32m 38s.xml">
       <configuration name="WalkRouterTest.mainTest_neighbours" configurationId="JUnit" />
     </history-entry>
@@ -289,12 +270,20 @@
     <history-entry file="WalkRouterTest_mainTest_sameNode - 2019.05.28 at 21h 13m 50s.xml">
       <configuration name="WalkRouterTest.mainTest_sameNode" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="WalkRouterTest_mainTest_sameNode - 2019.05.28 at 21h 19m 01s.xml">
+      <configuration name="WalkRouterTest.mainTest_sameNode" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WalkRouterTest - 2019.05.28 at 21h 19m 21s.xml">
+      <configuration name="WalkRouterTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 13h 32m 37s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26308724" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -303,7 +292,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -350,18 +339,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
     </layout-to-restore>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/WalkRouter.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
@@ -370,20 +347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="68463" column="19" selection-start-line="68463" selection-start-column="9" selection-end-line="68463" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -401,20 +364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -422,17 +371,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="890">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="680">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        <state relative-caret-position="522">
+          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
         </state>
       </provider>
     </entry>
