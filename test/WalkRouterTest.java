@@ -12,16 +12,19 @@ public class WalkRouterTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
-    public void setUpStreams() {
+    public void setUpSystemOut() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    public void setUpNoUserInput() {
         String input = "*";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-
-        System.setOut(new PrintStream(outContent));
     }
 
     @Test
     public void mainTest_sameNode() throws Exception {
+        setUpNoUserInput();
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "1522658960"};
         WalkRouter.main(inputArr);
 
@@ -30,6 +33,7 @@ public class WalkRouterTest {
 
     @Test
     public void mainTest_neighbours() throws Exception {
+        setUpNoUserInput();
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "439984987"};
         WalkRouter.main(inputArr);
 
@@ -38,6 +42,7 @@ public class WalkRouterTest {
 
     @Test
     public void mainTest_notNeighbours() throws Exception {
+        setUpNoUserInput();
         ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
@@ -47,6 +52,7 @@ public class WalkRouterTest {
 
     @Test
     public void mainTest_multiplePaths() throws Exception {
+        setUpNoUserInput();
         String[] inputArr = {TEST_FILE_SMALL_STRING, "1", "4"};
         WalkRouter.main(inputArr);
 
@@ -55,6 +61,7 @@ public class WalkRouterTest {
 
     @Test
     public void mainTest_stopoff() throws Exception {
+        setUpNoUserInput();
         String[] inputArr = {TEST_FILE_SMALL_STRING, "1", "2", "3"};
         WalkRouter.main(inputArr);
 

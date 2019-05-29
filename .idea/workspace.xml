@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d103e976-6fef-4571-b617-4bdf198d2f02" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/WalkRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WalkRouter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/WalkRouterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/WalkRouterTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,7 +17,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/WalkRouter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="244">
@@ -81,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+            <state relative-caret-position="1071">
+              <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -198,7 +197,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559151697956" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559151944622" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -224,7 +223,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in WalkRouterApp">
+  <component name="RunManager" selected="JUnit.WalkRouterTest">
     <configuration name="WalkRouter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WalkRouter" />
       <module name="WalkRouterApp" />
@@ -278,11 +277,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WalkRouterTest" />
+        <item itemvalue="JUnit.WalkRouterTest.mainTest_sameNode" />
         <item itemvalue="JUnit.All in WalkRouterApp" />
         <item itemvalue="JUnit.WalkRouterTest.mainTest_stopoff" />
         <item itemvalue="Application.WalkRouter" />
-        <item itemvalue="JUnit.WalkRouterTest" />
-        <item itemvalue="JUnit.WalkRouterTest.mainTest_sameNode" />
       </list>
     </recent_temporary>
   </component>
@@ -300,12 +299,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WalkRouterTest_mainTest_sameNode - 2019.05.28 at 21h 08m 21s.xml">
-      <configuration name="WalkRouterTest.mainTest_sameNode" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WalkRouterTest_mainTest_sameNode - 2019.05.28 at 21h 13m 50s.xml">
-      <configuration name="WalkRouterTest.mainTest_sameNode" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="WalkRouterTest_mainTest_sameNode - 2019.05.28 at 21h 19m 01s.xml">
       <configuration name="WalkRouterTest.mainTest_sameNode" configurationId="JUnit" />
     </history-entry>
@@ -330,6 +323,12 @@
     <history-entry file="WalkRouterTest_mainTest_stopoff - 2019.05.29 at 18h 34m 09s.xml">
       <configuration name="WalkRouterTest.mainTest_stopoff" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="WalkRouterTest_mainTest_stopoff - 2019.05.29 at 18h 41m 34s.xml">
+      <configuration name="WalkRouterTest.mainTest_stopoff" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 18h 41m 41s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -345,14 +344,14 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39943343" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -390,18 +389,6 @@
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
     </layout-to-restore>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/WalkRouterTest.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -463,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -488,6 +468,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/WalkRouterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
         </state>
       </provider>
     </entry>
