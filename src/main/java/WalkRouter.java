@@ -29,15 +29,10 @@ public class WalkRouter implements AutoCloseable{
     private final Scanner scanner;
     private final Map<Long, Node> nodeMap;
 
-    private Set<Node> visitedNodes;
-    private PriorityQueue<Node> priorityQueue;
-
     private WalkRouter(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
         this.scanner = new Scanner(System.in);
         nodeMap = new HashMap<>();
-        visitedNodes = new HashSet<>();
-        priorityQueue = new PriorityQueue<>();
     }
 
     public static void main(String[] args) throws Exception {
@@ -48,40 +43,19 @@ public class WalkRouter implements AutoCloseable{
                 for (int i = 1; i < args.length; i++) {
                     nodesInPath.add(walkRouter.parseInputNode(args[i]));
                 }
-                walkRouter.findShortestDistanceBetweenNodes(nodesInPath);
+                walkRouter.findShortestDistanceInRoute(nodesInPath);
             }
             walkRouter.processMoreShortestPaths();
         }
     }
 
-    private void findShortestDistanceBetweenNodes(List<Node> nodesInPath) {
+    private void findShortestDistanceInRoute(List<Node> nodesInPath) {
         // todo implement queue with duplicle
         Route route = new Route(nodesInPath);
-//        List<Node> path = new ArrayList<>();
         for (int i = 0; i < nodesInPath.size() - 1; i++) {
-            Route innerRoute = new Route(nodesInPath.subList(i, i + 2));
-            resetNodeDistances(innerRoute.getStartNode());
-            priorityQueue.add(innerRoute.getStartNode());
-            try {
-                while (priorityQueue.peek() != null && !Objects.equals(priorityQueue.peek(), innerRoute.getEndNode())) {
-                    Node currentNode = priorityQueue.poll();
-                    if (!visitedNodes.contains(currentNode)) {
-                        visitedNodes.add(currentNode);
-                        evaluateAdjacentNodes(currentNode);
-                    }
-                }
-                if (priorityQueue.peek() == null) {
-                    throw new NullPointerException();
-                }
-                Node endNodeAfterParse = priorityQueue.poll();
-                innerRoute.setDistance(endNodeAfterParse.getDistance());
-                innerRoute.setPath(endNodeAfterParse.getPath());
-                route.addDistance(innerRoute.getDistance());
-                route.getPath().addAll(innerRoute.getPath());
-            } catch (NullPointerException e) {
-                throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" +
-                        innerRoute.getStartNode().getId() + "] and [" + innerRoute.getEndNode().getId() + "].");
-            }
+            Route innerRoute = findShortestDistanceBetweenNodes(nodesInPath, i);
+            route.addDistance(innerRoute.getDistance());
+            route.getPath().addAll(innerRoute.getPath());
         }
         System.out.println("Shortest distance between " +
                 route.getStartNode().getId() + " and " + route.getEndNode().getId() +
@@ -89,25 +63,52 @@ public class WalkRouter implements AutoCloseable{
                 " achieved with path: \n" + route.getPath().get(route.getPath().size() - 1).printPath());
     }
 
+    private Route findShortestDistanceBetweenNodes(List<Node> nodesInPath, int startNode) {
+        Route route = new Route(nodesInPath.subList(startNode, startNode + 2));
+        resetNodeDistances(route.getStartNode());
+        PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
+        priorityQueue.add(route.getStartNode());
+        Set<Node> visitedNodes = new HashSet<>();
+
+        try {
+            while (priorityQueue.peek() != null && !Objects.equals(priorityQueue.peek(), route.getEndNode())) {
+                Node currentNode = priorityQueue.poll();
+                if (!visitedNodes.contains(currentNode)) {
+                    visitedNodes.add(currentNode);
+                    evaluateAdjacentNodes(visitedNodes, priorityQueue, currentNode);
+                }
+            }
+            if (priorityQueue.peek() == null) {
+                throw new NullPointerException();
+            }
+            Node endNodeAfterParse = priorityQueue.poll();
+            route.setDistance(endNodeAfterParse.getDistance());
+            route.setPath(endNodeAfterParse.getPath());
+            return route;
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" +
+                    route.getStartNode().getId() + "] and [" + route.getEndNode().getId() + "].");
+        }
+    }
+
+    // todo remove after duple
     private void resetNodeDistances(Node startNode) {
-        priorityQueue = new PriorityQueue<>();
-        visitedNodes = new HashSet<>();
         for (Map.Entry<Long, Node> entry : nodeMap.entrySet()) {
             Node.reset(entry.getValue());
         }
         startNode.setDistance(0);
     }
 
-    private void evaluateAdjacentNodes(Node currentNode) {
+    private void evaluateAdjacentNodes(Set<Node> visitedNodes, PriorityQueue<Node> priorityQueue, Node currentNode) {
         for (Edge edge : currentNode.getEdges()) {
             Node otherNodeInEdge = edge.getOtherNode(currentNode);
             if (!visitedNodes.contains(otherNodeInEdge)) {
-                updateNodeDistance(currentNode, edge, otherNodeInEdge);
+                updateNodeDistance(priorityQueue, currentNode, edge, otherNodeInEdge);
             }
         }
     }
 
-    private void updateNodeDistance(Node currentNode, Edge edge, Node nextNode) {
+    private void updateNodeDistance(PriorityQueue<Node> priorityQueue, Node currentNode, Edge edge, Node nextNode) {
         long calculatedDistance = currentNode.getDistance() + edge.getDistance();
         if (calculatedDistance < nextNode.getDistance()) {
             nextNode.setDistance(calculatedDistance);
@@ -129,7 +130,7 @@ public class WalkRouter implements AutoCloseable{
             for (String str : scannerInput) {
                 nodesInPath.add(parseInputNode(str));
             }
-            findShortestDistanceBetweenNodes(nodesInPath);
+            findShortestDistanceInRoute(nodesInPath);
             System.out.println(continueString);
         }
     }
