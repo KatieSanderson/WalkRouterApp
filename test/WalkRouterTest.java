@@ -36,7 +36,10 @@ public class WalkRouterTest {
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "1522658960"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(Integer.toString(0), outContent.toString().split(" ")[7]);
+        String[] outContentSplit = outContent.toString().split(" ");
+        Assert.assertEquals("0", outContentSplit[7]);
+        Assert.assertEquals("1522658960", outContentSplit[11]);
+
     }
 
     @Test
@@ -45,7 +48,7 @@ public class WalkRouterTest {
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "439984987"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(Integer.toString(1), outContent.toString().split(" ")[7]);
+        Assert.assertEquals("1", outContent.toString().split(" ")[7]);
     }
 
     @Test
@@ -54,7 +57,7 @@ public class WalkRouterTest {
         String[] inputArr = {TEST_FILE_LARGE_STRING, "1522658960", "1522658933"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(Integer.toString(210), outContent.toString().split(" ")[7]);
+        Assert.assertEquals("210", outContent.toString().split(" ")[7]);
     }
 
     @Test
@@ -63,7 +66,7 @@ public class WalkRouterTest {
         String[] inputArr = {TEST_FILE_SMALL_STRING, "1", "4"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(Integer.toString(102), outContent.toString().split(" ")[7]);
+        Assert.assertEquals("102", outContent.toString().split(" ")[7]);
     }
 
     @Test
@@ -72,7 +75,7 @@ public class WalkRouterTest {
         String[] inputArr = {TEST_FILE_SMALL_STRING, "1", "2", "3"};
         WalkRouter.main(inputArr);
 
-        Assert.assertEquals(Integer.toString(4), outContent.toString().split(" ")[7]);
+        Assert.assertEquals("4", outContent.toString().split(" ")[7]);
     }
 
     @Test

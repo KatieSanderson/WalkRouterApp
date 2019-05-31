@@ -50,36 +50,35 @@ public class WalkRouter implements AutoCloseable{
     }
 
     private void findShortestDistanceInRoute(List<Node> nodesInPath) {
-        // todo implement queue with duplicle
+        // todo implement queue with duple
         Route route = new Route(nodesInPath);
         for (int i = 0; i < nodesInPath.size() - 1; i++) {
-            Route innerRoute = findShortestDistanceBetweenNodes(nodesInPath, i);
+            Route innerRoute = findShortestDistanceBetweenNodes(nodesInPath.subList(i, i + 2));
             route.addDistance(innerRoute.getDistance());
             route.getPath().addAll(innerRoute.getPath());
         }
         System.out.println("Shortest distance between " +
                 route.getStartNode().getId() + " and " + route.getEndNode().getId() +
                 " is " + route.getDistance() +
-                " achieved with path: \n" + route.getPath().get(route.getPath().size() - 1).printPath());
+                " achieved with path: " + route.getPath().get(route.getPath().size() - 1).printPath());
     }
 
-    private Route findShortestDistanceBetweenNodes(List<Node> nodesInPath, int startNode) {
-        Route route = new Route(nodesInPath.subList(startNode, startNode + 2));
+    private Route findShortestDistanceBetweenNodes(List<Node> nodesInPath) {
+        Route route = new Route(nodesInPath);
+        // todo remove after duple
         resetNodeDistances(route.getStartNode());
+
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
         priorityQueue.add(route.getStartNode());
         Set<Node> visitedNodes = new HashSet<>();
 
         try {
-            while (priorityQueue.peek() != null && !Objects.equals(priorityQueue.peek(), route.getEndNode())) {
+            while (!Objects.equals(priorityQueue.peek(), route.getEndNode())) {
                 Node currentNode = priorityQueue.poll();
                 if (!visitedNodes.contains(currentNode)) {
                     visitedNodes.add(currentNode);
                     evaluateAdjacentNodes(visitedNodes, priorityQueue, currentNode);
                 }
-            }
-            if (priorityQueue.peek() == null) {
-                throw new NullPointerException();
             }
             Node endNodeAfterParse = priorityQueue.poll();
             route.setDistance(endNodeAfterParse.getDistance());
@@ -124,7 +123,6 @@ public class WalkRouter implements AutoCloseable{
         System.out.println(continueString);
         String line;
         while (scanner.hasNext() && !(line = scanner.nextLine()).equals(exitString)) {
-            // todo verify user input is acceptable
             String[] scannerInput = line.split("[\\s]*,[\\s]*");
             List<Node> nodesInPath = new ArrayList<>();
             for (String str : scannerInput) {
