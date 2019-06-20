@@ -177,7 +177,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561038030922" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561038236164" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -282,9 +282,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 20h 07m 16s.xml">
-      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 20h 16m 48s.xml">
       <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
@@ -310,6 +307,9 @@
       <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
     <history-entry file="All_in_WalkRouterApp - 2019.05.29 at 20h 19m 36s.xml">
+      <configuration name="All in WalkRouterApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_WalkRouterApp - 2019.06.20 at 14h 37m 04s.xml">
       <configuration name="All in WalkRouterApp" configurationId="JUnit" />
     </history-entry>
   </component>
