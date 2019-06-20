@@ -20,6 +20,7 @@ RUN INSTRUCTIONS
     * <to-osm-id> is the ID of the ending node to calculate shortest path (see VALID INPUT NODE REQUIREMENTS section)
 
 VALID FILE REQUIREMENTS
+
 File will be format:
 ~~~~
 <number of nodes>
@@ -40,15 +41,15 @@ ASSUMPTIONS
 1. Program arguments will contain valid file and two valid nodes
 2. All edges are bi-directional and walkable
 3. Input bounds:
-    * <OSM id of node>: [0, 2^63 - 1]
-        * Lower bound is 0; ids should be specified with positive values
-        * Upper bound is 2^63 - 1; large capacity for values and improbability of requiring larger values to represent ids
-    * <length in meters>: [0, 2^31 - 1]
-        * Lower bound must be 0; negative distances are impossible in context but 0 would indicate two nodes in the same location
-        * Upper bound is 2^31 - 1; large capacity for values and improbability of requiring larger values to represent distance
-    * <number of nodes>: [2, 2^31 - 1]
-        * Lower bound is 2; 2 nodes are required to run program without thrown exceptions
-        * Upper bound is 2^31 - 1; large capacity for values and improbability of requiring larger values to represent number of nodes
-    * <number of edges>: [1, 2^31 - 1]
+    * OSM id of node: [0, 2^63 - 1]
+       * Lower bound is 0; ids should be specified with positive values
+       * Upper bound is 2^63 - 1; large capacity for values and improbability of requiring larger values to represent ids
+    * length in meters: [0, 2^31 - 1]
+       * Lower bound must be 0; negative distances are impossible in context but 0 would indicate two nodes in the same location
+       * Upper bound is 2^31 - 1; large capacity for values and improbability of requiring larger values to represent distance
+    * number of nodes: [2, 2^31 - 1]
+       * Lower bound is 2; 2 nodes are required to run program without thrown exceptions
+       * Upper bound is 2^31 - 1; large capacity for values and improbability of requiring larger values to represent number of nodes
+    * number of edges: [1, 2^31 - 1]
         * Lower bound is 1; 1 edge is required to run program without thrown exceptions
         * Upper bound is 2^31 - 1; large capacity for values and improbability of requiring larger values to represent number of edges
