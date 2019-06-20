@@ -15,9 +15,9 @@ RUN INSTRUCTIONS
 1. If not installed on OS, install Java JDK and add to PATH
 2. Navigate to project file in terminal
 3. Run command: "./run.sh <path to graph> <from-osm-id> <to-osm-id>" where:
-    * <path to graph> is the absolute or relative (with root of project folder) file path for valid file (see VALID FILE REQUIREMENTS section)
-    * <from-osm-id> is the ID of the starting node to calculate shortest path (see VALID INPUT NODE REQUIREMENTS section)
-    * <to-osm-id> is the ID of the ending node to calculate shortest path (see VALID INPUT NODE REQUIREMENTS section)
+    * path to graph: the absolute or relative (with root of project folder) file path for valid file (see VALID FILE REQUIREMENTS section)
+    * from-osm-id: is the ID of the starting node to calculate shortest path (see VALID INPUT NODE REQUIREMENTS section)
+    * to-osm-id: is the ID of the ending node to calculate shortest path (see VALID INPUT NODE REQUIREMENTS section)
 
 VALID FILE REQUIREMENTS
 
