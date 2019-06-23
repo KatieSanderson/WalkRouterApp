@@ -8,8 +8,8 @@ import java.util.Objects;
 
 class Edge {
 
-    private Node node1;
-    private Node node2;
+    private final Node node1;
+    private final Node node2;
     private int distance;
 
     Edge(Node node1, Node node2, int distance) {
@@ -24,8 +24,7 @@ class Edge {
         } else if (Objects.equals(node, node2)) {
             return node1;
         } else {
-            throw new IllegalArgumentException("Invalid");
-            // todo
+            throw new IllegalArgumentException("Invalid Node [" + node.getId() + "] for indicated Edge.");
         }
     }
 

@@ -23,7 +23,7 @@ import java.util.*;
  * Input is parsed into {@link Node} and {@link Edge}. The shortest walking distance in meters is computed between two given OSM nodes in the graph (assuming all edges are walkable)
  */
 
-public class WalkRouter implements AutoCloseable{
+public class WalkRouter implements AutoCloseable {
 
     private final BufferedReader bufferedReader;
     private final Scanner scanner;
@@ -36,8 +36,11 @@ public class WalkRouter implements AutoCloseable{
     }
 
     public static void main(String[] args) throws Exception {
+        // todo use with open maps data
         try (WalkRouter walkRouter = new WalkRouter(new BufferedReader(new FileReader(new File(args[0]))))) {
             walkRouter.parseURL();
+
+            // calculate and output routes
             if (args.length > 1) {
                 List<Node> nodesInPath = new ArrayList<>();
                 for (int i = 1; i < args.length; i++) {
@@ -50,39 +53,39 @@ public class WalkRouter implements AutoCloseable{
     }
 
     private void findShortestDistanceInRoute(List<Node> nodesInPath) {
-        // todo implement queue with duple
         Route route = new Route(nodesInPath);
+        // last element not included in for loop due to findShortestDistanceBetweenNodes call including next element
         for (int i = 0; i < nodesInPath.size() - 1; i++) {
-            Route innerRoute = findShortestDistanceBetweenNodes(nodesInPath.subList(i, i + 2));
-            route.addDistance(innerRoute.getDistance());
-            route.getPath().addAll(innerRoute.getPath());
+            // find subroute between two nodes in nodesInPath and add to route
+            Route subroute = findShortestDistanceBetweenNodes(nodesInPath.subList(i, i + 2));
+            route.addDistance(subroute.getDistance());
+
+            // remove the last node from path (to prevent duplicated node in list), if present
+            if (route.getPath().size() > 0) {
+                route.getPath().remove(route.getPath().size() - 1);
+            }
+            route.getPath().addAll(subroute.getPath());
         }
-        System.out.println("Shortest distance between " +
-                route.getStartNode().getId() + " and " + route.getEndNode().getId() +
-                " is " + route.getDistance() +
-                " achieved with path: " + route.getPath().get(route.getPath().size() - 1).printPath());
+        route.printRoute();
     }
 
     private Route findShortestDistanceBetweenNodes(List<Node> nodesInPath) {
         Route route = new Route(nodesInPath);
-        // todo remove after duple
-        resetNodeDistances(route.getStartNode());
-
-        PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
-        priorityQueue.add(route.getStartNode());
+        PriorityQueue<RouteNode> priorityQueue = initRoutePriorityQueue(route);
         Set<Node> visitedNodes = new HashSet<>();
 
         try {
-            while (!Objects.equals(priorityQueue.peek(), route.getEndNode())) {
-                Node currentNode = priorityQueue.poll();
+            while (!Objects.equals(priorityQueue.peek().getNode(), route.getEndNode())) {
+                RouteNode currentRouteNode = priorityQueue.poll();
+                Node currentNode = currentRouteNode.getNode();
                 if (!visitedNodes.contains(currentNode)) {
                     visitedNodes.add(currentNode);
-                    evaluateAdjacentNodes(visitedNodes, priorityQueue, currentNode);
+                    evaluateAdjacentNodes(visitedNodes, priorityQueue, currentRouteNode);
                 }
             }
-            Node endNodeAfterParse = priorityQueue.poll();
-            route.setDistance(endNodeAfterParse.getDistance());
-            route.setPath(endNodeAfterParse.getPath());
+            RouteNode endRouteNode = priorityQueue.poll();
+            route.setDistance(endRouteNode.getDistance());
+            route.setPath(endRouteNode.getPath());
             return route;
         } catch (NullPointerException e) {
             throw new IllegalArgumentException("Invalid input node(s). No valid route between provided nodes with id's: [" +
@@ -90,30 +93,33 @@ public class WalkRouter implements AutoCloseable{
         }
     }
 
-    // todo remove after duple
-    private void resetNodeDistances(Node startNode) {
-        for (Map.Entry<Long, Node> entry : nodeMap.entrySet()) {
-            Node.reset(entry.getValue());
-        }
-        startNode.setDistance(0);
+    private PriorityQueue<RouteNode> initRoutePriorityQueue(Route route) {
+        PriorityQueue<RouteNode> priorityQueue = new PriorityQueue<>();
+        RouteNode startingRouteNode = new RouteNode(route.getStartNode());
+        startingRouteNode.setDistance(0);
+        priorityQueue.add(startingRouteNode);
+        return priorityQueue;
     }
 
-    private void evaluateAdjacentNodes(Set<Node> visitedNodes, PriorityQueue<Node> priorityQueue, Node currentNode) {
+    private void evaluateAdjacentNodes(Set<Node> visitedNodes, PriorityQueue<RouteNode> priorityQueue, RouteNode currentRouteNode) {
+        Node currentNode = currentRouteNode.getNode();
         for (Edge edge : currentNode.getEdges()) {
             Node otherNodeInEdge = edge.getOtherNode(currentNode);
             if (!visitedNodes.contains(otherNodeInEdge)) {
-                updateNodeDistance(priorityQueue, currentNode, edge, otherNodeInEdge);
+                updateNodeDistance(priorityQueue, currentRouteNode, edge, new RouteNode(otherNodeInEdge));
             }
         }
     }
 
-    private void updateNodeDistance(PriorityQueue<Node> priorityQueue, Node currentNode, Edge edge, Node nextNode) {
-        long calculatedDistance = currentNode.getDistance() + edge.getDistance();
+    private void updateNodeDistance(PriorityQueue<RouteNode> priorityQueue, RouteNode currentRouteNode, Edge edge, RouteNode nextNode) {
+        long calculatedDistance = currentRouteNode.getDistance() + edge.getDistance();
+        // if calculatedDistance is less than nextNode's current distance, optimize it and re-add to priority queue
+        // note: cannot simply update nextNode's RouteNode in priority queue - will violate invariants of priority queue, return incorrect results
         if (calculatedDistance < nextNode.getDistance()) {
             nextNode.setDistance(calculatedDistance);
-            nextNode.setPath(Node.copyPath(currentNode.getPath()));
-            // copy of nextNode with new distance is added to priorityQueue
-            priorityQueue.add(new Node(nextNode, calculatedDistance));
+            nextNode.setPath(new ArrayList<>(currentRouteNode.getPath()));
+            // optimized nextNode added to priorityQueue
+            priorityQueue.add(nextNode);
         }
     }
 
@@ -167,8 +173,8 @@ public class WalkRouter implements AutoCloseable{
         return new Edge(node1, node2, distance);
     }
 
-    private Node parseNode(String readLine) {
-        return new Node(Long.parseLong(readLine));
+    private Node parseNode(String nodeData) {
+        return new Node(Long.parseLong(nodeData));
     }
 
     private void addEdgeToNode(Edge edge, Node node) {
