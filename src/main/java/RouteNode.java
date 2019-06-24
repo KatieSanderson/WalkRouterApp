@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Each {@link RouteNode} object represents an OSM node, the connecting edges on that node, and the distance of this node from a given node (starting node in @WalkRouter)
+ */
+
 class RouteNode implements Comparable<RouteNode> {
 
     private Node node;
@@ -13,17 +17,6 @@ class RouteNode implements Comparable<RouteNode> {
         distance = Long.MAX_VALUE;
     }
 
-    String printPath() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < path.size(); i++) {
-            stringBuilder.append(path.get(i).getId()).append(" ");
-            if (i % 5 == 4) {
-                stringBuilder.append("\n");
-            }
-        }
-        return stringBuilder.toString();
-    }
-
     @Override
     public int compareTo(RouteNode that) {
         return Long.compare(distance, that.distance);
@@ -33,15 +26,11 @@ class RouteNode implements Comparable<RouteNode> {
         return node;
     }
 
-    public void setNode(Node node) {
-        this.node = node;
-    }
-
-    public List<Node> getPath() {
+    List<Node> getPath() {
         return path;
     }
 
-    public void setPath(List<Node> path) {
+    void setPath(List<Node> path) {
         this.path = path;
         path.add(this.node);
     }
@@ -50,7 +39,7 @@ class RouteNode implements Comparable<RouteNode> {
         return distance;
     }
 
-    public void setDistance(long distance) {
+    void setDistance(long distance) {
         this.distance = distance;
     }
 }

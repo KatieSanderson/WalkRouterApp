@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Each Node object represents an OSM node, the connecting edges on that node, and the distance of this node from a given node (starting node in @WalkRouter)
+ * Each {@link Node} object represents an OSM node and the connecting {@link Edge}s of that node
  */
 
 class Node {

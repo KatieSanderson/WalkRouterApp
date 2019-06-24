@@ -1,9 +1,9 @@
 README
 
-WalkRouterApp is a command line application to calculate the shortest walking distance in meters between two given OSM requiredNodes in a provided graph.
+WalkRouterApp is a command line application to calculate the shortest distance in meters between OSM requiredNodes in a provided graph.
 
 * Required arguments: valid file <path to graph> and two valid OSM requiredNodes <from-osm-id> <to-osm-id>
-* Printed to console: shortest walking distance (meters) between input OSM requiredNodes
+* Printed to console: shortest walking distance (meters) between input OSM required Nodes
 
 Input is parsed into Node and Edge. The shortest walking distance in meters is computed between two given OSM requiredNodes in the graph (assuming all edges are walkable)
 
@@ -12,7 +12,7 @@ BUILD STATUS (Travis CI)
 [![Build Status](https://travis-ci.com/KatieSanderson/WalkRouterApp.svg?branch=master)](https://travis-ci.com/KatieSanderson/WalkRouterApp)
 
 RUN INSTRUCTIONS
-1. If not installed on OS, install Java JDK and add to PATH
+1. If not installed on OS, install JDK and add to PATH
 2. Navigate to project file in terminal
 3. Run command: "./run.sh <path to graph> <from-osm-id> <to-osm-id>" where:
     * path to graph: the absolute or relative (with root of project folder) file path for valid file (see VALID FILE REQUIREMENTS section)

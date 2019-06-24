@@ -1,9 +1,7 @@
 import java.util.Objects;
 
 /**
- * Each Edge object represents the distance between OSM nodes
- *
- * The connecting nodes are stored in a @List for maintainability
+ * {@link Edge} represents the distance between two OSM {@link Node}s.
  */
 
 class Edge {

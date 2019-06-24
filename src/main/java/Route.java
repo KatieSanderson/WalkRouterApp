@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * {@link Route} stores the required {@link Node}s in a route (start, end, and any intermediate nodes), the cumulative distance between these {@link Node}s in order, and the path of {@link Node}s
+ */
+
 class Route {
 
     private final List<Node> requiredNodes;
@@ -50,8 +54,7 @@ class Route {
                 .append(getEndNode().getId())
                 .append(" is ")
                 .append(distance)
-                .append(" achieved with path: ")
-                .append("\n");
+                .append(" achieved with path: ");
         for (int i = 0; i < path.size(); i++) {
             stringBuilder.append(path.get(i).getId()).append(" ");
             if (i % 5 == 4) {

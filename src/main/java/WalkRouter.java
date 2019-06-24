@@ -6,21 +6,25 @@ import java.util.*;
 
 /**
  * Required arguments: valid file and two valid OSM nodes
- * Printed to console: shortest walking path and distance between input OSM nodes
+ * <p>Printed to console: shortest walking path and distance between input OSM nodes
+ * <p>
+ * <p>Valid file will consist of the format:
+ * <p>&lt;number of nodes&gt;
+ * <p>&lt;OSM id of node&gt;
+ * <p>...
+ * <p>&lt;OSM id of node&gt;
+ * <p>&lt;number of edges&gt;
+ * <p>&lt;from node OSM id&gt;
+ * &lt;to node OSM id&gt;
+ * &lt;length in meters&gt;
+ * <p>...
+ * &lt;from node OSM id&gt;
+ * &lt;to node OSM id&gt;
+ * &lt;length in meters&gt;
+ * <p>
+ * <p>Valid OSM Nodes are nodes with <OSM id of node> in file input and can be connected via edges (<from node OSM id> <to node OSM id> <length in meters>) in input
  *
- * Valid file will consist of the format:
- * <number of nodes>
- * <OSM id of node>
- * ...
- * <OSM id of node>
- * <number of edges>
- * <from node OSM id> <to node OSM id> <length in meters>
- * ...
- * <from node OSM id> <to node OSM id> <length in meters>
- *
- * Valid OSM Nodes are nodes with <OSM id of node> in file input and can be connected via edges (<from node OSM id> <to node OSM id> <length in meters>) in input
- *
- * Input is parsed into {@link Node} and {@link Edge}. The shortest walking distance in meters is computed between two given OSM nodes in the graph (assuming all edges are walkable)
+ * <p>Input is parsed into {@link Node} and {@link Edge}. The shortest walking distance in meters is computed between two given OSM nodes in the graph (assuming all edges are walkable)
  */
 
 public class WalkRouter implements AutoCloseable {
@@ -38,9 +42,10 @@ public class WalkRouter implements AutoCloseable {
     public static void main(String[] args) throws Exception {
         // todo use with open maps data
         try (WalkRouter walkRouter = new WalkRouter(new BufferedReader(new FileReader(new File(args[0]))))) {
-            walkRouter.parseURL();
+            walkRouter.parseData();
 
             // calculate and output routes
+            // if route nodes are passed in as program arguments:
             if (args.length > 1) {
                 List<Node> nodesInPath = new ArrayList<>();
                 for (int i = 1; i < args.length; i++) {
@@ -60,7 +65,7 @@ public class WalkRouter implements AutoCloseable {
             Route subroute = findShortestDistanceBetweenNodes(nodesInPath.subList(i, i + 2));
             route.addDistance(subroute.getDistance());
 
-            // remove the last node from path (to prevent duplicated node in list), if present
+            // remove the last node from path (to prevent duplicated node in list), if present, and add subroute path to route
             if (route.getPath().size() > 0) {
                 route.getPath().remove(route.getPath().size() - 1);
             }
@@ -129,13 +134,17 @@ public class WalkRouter implements AutoCloseable {
         System.out.println(continueString);
         String line;
         while (scanner.hasNext() && !(line = scanner.nextLine()).equals(exitString)) {
-            String[] scannerInput = line.split("[\\s]*,[\\s]*");
-            List<Node> nodesInPath = new ArrayList<>();
-            for (String str : scannerInput) {
-                nodesInPath.add(parseInputNode(str));
+            try {
+                String[] scannerInput = line.split("[\\s]*,[\\s]*");
+                List<Node> nodesInPath = new ArrayList<>();
+                for (String str : scannerInput) {
+                    nodesInPath.add(parseInputNode(str));
+                }
+                findShortestDistanceInRoute(nodesInPath);
+                System.out.println(continueString);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage() + " Input valid, comma-separated node ids. To end, enter \"" + exitString + "\"");
             }
-            findShortestDistanceInRoute(nodesInPath);
-            System.out.println(continueString);
         }
     }
 
@@ -148,7 +157,7 @@ public class WalkRouter implements AutoCloseable {
         }
     }
 
-    private void parseURL() throws IOException {
+    private void parseData() throws IOException {
         // parse and add nodes to map
         int numNodes = Integer.parseInt(bufferedReader.readLine());
         for (int i = 0; i < numNodes; i++) {
